@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, BrowserRouter as Router } from "react-router-dom"
+import { Redirect } from 'react-router-dom';
+
 import {
   Container,
   Divider,
@@ -57,7 +59,14 @@ const Navigation = (props) => {
               (id)
                 ? <div>
                 <button onClick={userLogout}>로그아웃</button>
-                <button type="button" onclick="stream">화상 통화</button>
+                <Router>
+                  <Link to="stream">
+                    <button type="button" onclick="stream">화상 통화</button>
+                  </Link>
+                </Router>
+                {/* <button type="button" onclick="/stream">화상 통화</button> */}
+                
+                
                 </div>
                 : <div>
                   <button onClick={() => {displayForms("login")}}>로그인</button>

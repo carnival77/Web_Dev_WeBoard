@@ -8,6 +8,7 @@ export default class RegisterForm extends Component {
 
     this.state = {
       username: "",
+      email: "",
       password: "",
     }
   }
@@ -21,9 +22,9 @@ export default class RegisterForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { username, password } = this.state;
+    const { username, email,password } = this.state;
 
-    this.props.userRegistration({ username, password });
+    this.props.userRegistration({ username, email,password });
   }
 
   render() {
@@ -32,12 +33,13 @@ export default class RegisterForm extends Component {
         <div className="chatapp__form--modal">
           <form onSubmit={this.handleSubmit}>
             <input onChange={this.handleChange} name="username" type="text" label="Username" placeholder="&#xf2c0;  아이디를 입력하세요."/>
+            <input onChange={this.handleChange} name="email" type="text" label="Email" placeholder="&#xf2c0; 이메일을 입력하세요."/>
             <input onChange={this.handleChange} name="password" type="password" label="Password" placeholder="&#xf13e; 비밀번호를 입력하세요."/>
             {
               (this.props.registrationError.length)
                 ? <Alert 
                        header="오류가 발생했습니다."
-                      content="적절한 아이디와 비밀 번호를 입력해주세요."
+                      content="적절한 아이디, 비밀 번호, 이메일을 입력해주세요."
                   />
                 : null
             }
@@ -51,5 +53,6 @@ export default class RegisterForm extends Component {
 
 RegisterForm.propTypes = {
   username: PropTypes.string,
+  email: PropTypes.string,
   password: PropTypes.string,
 }

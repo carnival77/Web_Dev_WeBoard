@@ -9,7 +9,7 @@ import ChatBox from '../ChatBox';
 //
 import Test from '../Boards/Boards';
 import { Link } from 'react-router-dom';
-// import ChatSelector from '../ChatSelector';
+import ChatSelector from '../ChatSelector';
 //
 import io from 'socket.io-client';
 import Moment from 'moment';
@@ -228,11 +228,11 @@ class ChatUIContainer extends Component {
 
   // Takes a username and password, then makes a POST call to our api which returns a token and that user's info
   // Then sets cookies of the given token, user data, and users channels
-  userRegistration = ({ username, password }) => {
+  userRegistration = ({ username,email, password }) => {
     const { cookies } = this.props;
     const currentChannel = this.state.currentChannel;
 
-    axios.post(`${API_URL}/auth/register`, { username, password })
+    axios.post(`${API_URL}/auth/register`, { username,email, password })
     .then(res => {
       cookies.set('token', res.data.token, { path: "/", maxAge: 7200 })
       cookies.set('user', res.data.user, { path: "/", maxAge: 7200 })

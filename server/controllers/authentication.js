@@ -34,12 +34,19 @@ exports.login = function(req, res, next) {
 exports.register = function(req, res, next) {
   const username = req.body.username;
   const password = req.body.password;
+  const email = req.body.email;
 
   // Validating username and password
   if(!username) {
     return res.status(422).send({
       error: 'You must enter a username.'
     });
+  }
+
+  if (!email) {
+    return res.status(422).send({
+      error: '이메일을 입력하세요.'
+    })
   }
 
   if (!password) {
@@ -64,6 +71,7 @@ exports.register = function(req, res, next) {
     let user = new User({
       username: username,
       password: password,
+      email: email,
     });
 
     user.save(function(err, user) {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Video from './pages';
-// import { Home, Signup, Classroom, Monthly,Profile,Index } from './pages';
+// import Video from './pages';
+import { Home, Signup, Classroom, Monthly,Profile,Index } from './pages';
+import Video from './pages/Video';
 import ChatUIContainer from './components/container/ChatUIContainer';
 import { CookiesProvider } from 'react-cookie';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -33,19 +34,19 @@ class App extends Component {
               ? <ChatUIContainer />
               : null
           }
-          <div className="app--container--btn">
+          {/* <div className="app--container--btn">
             {
               (this.state.chatShown)
                 ?  <button onClick={this.displayChat}>교실 나가기</button>
                 :  <button onClick={this.displayChat}>교실 참여</button>
             }
-          </div>
+          </div> */}
         </div>
-        {/* <Router>
+        <Router>
           <div>
             <Route exact path="/stream" component={Video} />
           </div>
-        </Router> */}
+        </Router>
       </CookiesProvider>
       
     );
